@@ -7,7 +7,7 @@ import './searchList.css';
 export const SearchList = () => {
   const dispatch = useDispatch();
   const filredData = useSelector(getFilterSelector);
-  const userInput = useSelector(getInputValueSelector)
+  const userInput = useSelector(getInputValueSelector);
 
   return (
     <ul className="dropDownList">

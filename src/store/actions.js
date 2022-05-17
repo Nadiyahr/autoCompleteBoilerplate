@@ -1,3 +1,5 @@
+import axios from 'axios';
+
 export const SET_USERNAME = 'SET_USERNAME';
 export const SET_FILTER = 'SET_FILTER';
 export const SET_OPEN = 'SET_OPEN';
@@ -7,6 +9,13 @@ export const setUserNameAction = (payload) => ({
   type: SET_USERNAME,
   payload,
 });
+
+export const loadAction = () => async (dispatc) => {
+  const result = await axios.get('https://jsonplaceholder.typicode.com/users')
+  const setUserNamesAction = setUserNameAction(result.data)
+
+  dispatc(setUserNamesAction)
+}
 
 export const setFilterAction = (payload) => ({
   type: SET_FILTER,

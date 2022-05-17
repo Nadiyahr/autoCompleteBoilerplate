@@ -1,5 +1,5 @@
-import { createStore } from 'redux';
-// import { composeWithDevTools } from '@redux-devtools/extension';
+import { createStore, applyMiddleware } from 'redux';
+import thunk from 'redux-thunk';
 import { SET_USERNAME, SET_FILTER, SET_OPEN, SET_INPUTVALUE } from './actions';
 
 const initialState = {
@@ -40,4 +40,4 @@ const reducer = (state = initialState, action) => {
   }
 }
 
-export const store = createStore(reducer);
+export const store = createStore(reducer, applyMiddleware(thunk));
