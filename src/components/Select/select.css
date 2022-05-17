@@ -1,0 +1,13 @@
+* {
+  box-sizing: border-box;
+}
+
+.userName {
+  position: relative;
+  width: 240px;
+  height: 40px;
+}
+
+.userName::placeholder {
+  color: #00000020;
+}

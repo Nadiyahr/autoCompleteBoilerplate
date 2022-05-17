@@ -1,9 +1,10 @@
 import React from 'react';
+import { Select } from './components/Select';
 
 const App = () => {
   return (
     <div className="App">
-      123
+        <Select />
     </div>
   );
 }
