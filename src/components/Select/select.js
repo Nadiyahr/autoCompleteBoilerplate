@@ -18,19 +18,19 @@ export const Select = () => {
     const { value } = event.target;
 
     dispatch(setOpenAction(true));
-    dispatch(setListIndexResetAction())
-    dispatch(setInputValueAction(value))
+    dispatch(setListIndexResetAction());
+    dispatch(setInputValueAction(value));
 
     const filtredArr = dataArr.filter((data) => value === ''
     ? data
     : data[0].toLowerCase().slice(0, value.length) === value.toLowerCase());
     
-    dispatch(setFilterAction(filtredArr))
+    dispatch(setFilterAction(filtredArr));
   }
 
   const navigationKey = (e) => {
     if (e.keyCode === 40 && index >= 0 && index < filter.length) {
-      dispatch(setListIndexDownAction())
+      dispatch(setListIndexDownAction());
     }
 
     if (e.keyCode === 38 && index >= 0 && index <= filter.length) {
@@ -45,7 +45,7 @@ export const Select = () => {
   }
 
   useEffect(() => {
-    dispatch(loadAction())
+    dispatch(loadAction());
   },[])
 
   return (
@@ -60,6 +60,10 @@ export const Select = () => {
           onFocus={() => {
             dispatch(setOpenAction(true));
             dispatch(setFilterAction(dataArr))
+          }}
+          onBlur={() => {
+            dispatch(setOpenAction(false));
+            dispatch(setListIndexResetAction());
           }}
           onKeyDown={(e) => navigationKey(e)}
           value={inputValue}
