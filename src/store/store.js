@@ -1,12 +1,21 @@
 import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
-import { SET_USERNAME, SET_FILTER, SET_OPEN, SET_INPUTVALUE } from './actions';
+import {
+  SET_USERNAME,
+  SET_FILTER,
+  SET_OPEN,
+  SET_INPUTVALUE,
+  SET_LISTINDEX_DOWN,
+  SET_LISTINDEX_UP,
+  SET_LISTINDEX_RESET,
+} from './actions';
 
 const initialState = {
   userName: [],
   filter: [],
   open: false,
-  inputValue: ''
+  inputValue: '',
+  listIndex: 0
 }
 
 const reducer = (state = initialState, action) => {
@@ -33,6 +42,24 @@ const reducer = (state = initialState, action) => {
           return {
             ...state,
             inputValue: action.payload
+          }
+
+        case SET_LISTINDEX_DOWN:
+          return {
+            ...state,
+            listIndex: state.listIndex += 1
+          }
+
+        case SET_LISTINDEX_UP:
+          return {
+            ...state,
+            listIndex: state.listIndex -= 1
+          }
+
+        case SET_LISTINDEX_RESET:
+          return {
+            ...state,
+            listIndex: 0
           }
 
       default:

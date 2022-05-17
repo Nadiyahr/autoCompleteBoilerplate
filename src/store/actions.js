@@ -4,6 +4,9 @@ export const SET_USERNAME = 'SET_USERNAME';
 export const SET_FILTER = 'SET_FILTER';
 export const SET_OPEN = 'SET_OPEN';
 export const SET_INPUTVALUE = 'SET_INPUTVALUE';
+export const SET_LISTINDEX_DOWN = 'SET_LISTINDEX_DOWN';
+export const SET_LISTINDEX_UP = 'SET_LISTINDEX_UP';
+export const SET_LISTINDEX_RESET = 'SET_LISTINDEX_RESET';
 
 export const setUserNameAction = (payload) => ({
   type: SET_USERNAME,
@@ -30,4 +33,16 @@ export const setOpenAction = (payload) => ({
 export const setInputValueAction = (payload) => ({
   type: SET_INPUTVALUE,
   payload,
+});
+
+export const setListIndexDownAction = () => ({
+  type: SET_LISTINDEX_DOWN,
+});
+
+export const setListIndexUpAction = () => ({
+  type: SET_LISTINDEX_UP,
+});
+
+export const setListIndexResetAction = () => ({
+  type: SET_LISTINDEX_RESET,
 });
