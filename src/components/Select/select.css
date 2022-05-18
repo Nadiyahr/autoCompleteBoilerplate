@@ -3,11 +3,43 @@
 }
 
 .userName {
+  padding-left: 12px;
   position: relative;
   width: 240px;
   height: 40px;
+  font-size: 16px;
+  border: solid 1px #00000060;
+  border-radius: 4px;
+  outline: none;
+  color: #00000080;
+}
+
+.userName:focus {
+  background-color: #00000010;
+  border: solid 2px #00000020;
 }
 
 .userName::placeholder {
   color: #00000020;
+}
+
+.btn {
+  margin: 10px;
+  height: 40px;
+  background-color: #1717e2;
+  border-radius: 4px;
+  border: solid 2px #7a7adf;
+  color: aliceblue;
+  font-size: medium;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.btn:hover {
+  transform: scale(1.1);
+  transition: transform 0.25s ease;
+}
+
+.btn:disabled {
+  background-color: #1717e270;
 }

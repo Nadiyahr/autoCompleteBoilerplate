@@ -24,7 +24,8 @@ export const Select = () => {
     const filtredArr = dataArr.filter((data) => value === ''
     ? data
     : data[0].toLowerCase().slice(0, value.length) === value.toLowerCase());
-    
+
+    dispatch(setListIndexDownAction())
     dispatch(setFilterAction(filtredArr));
   }
 
@@ -39,8 +40,9 @@ export const Select = () => {
 
     if (e.keyCode === 13) {
       e.preventDefault();
-      dispatch(setInputValueAction(filter[index][0]));
+      dispatch(setInputValueAction(filter[index - 1][0]));
       dispatch(setOpenAction(false));
+      e.target.blur()
     }
   }
 
@@ -49,7 +51,7 @@ export const Select = () => {
   },[])
 
   return (
-    <div className="search">
+    <form className="search">
       <label htmlFor="userName">
         <input
           type="text"
@@ -59,11 +61,8 @@ export const Select = () => {
           placeholder="Username"
           onFocus={() => {
             dispatch(setOpenAction(true));
-            dispatch(setFilterAction(dataArr))
-          }}
-          onBlur={() => {
-            dispatch(setOpenAction(false));
-            dispatch(setListIndexResetAction());
+            dispatch(setFilterAction(dataArr));
+            dispatch(setInputValueAction(''))
           }}
           onKeyDown={(e) => navigationKey(e)}
           value={inputValue}
@@ -71,6 +70,17 @@ export const Select = () => {
         />
       </label>
       {open && <SearchList />}
-    </div>
+      <button
+        className="btn"
+        disabled={!index}
+        onClick={(e) => {
+          e.preventDefault();
+          dispatch(setInputValueAction(filter[index - 1][0]));
+          dispatch(setOpenAction(false));
+        }}
+      >
+        save
+      </button>
+    </form>
   )
 }
